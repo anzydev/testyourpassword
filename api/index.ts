@@ -1,8 +1,14 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
-
-export default function handler(req: VercelRequest, res: VercelResponse) {
-  res.status(200).json({
-    ok: true,
-    message: "API is working"
-  });
+export default function handler(req: Request): Response {
+  return new Response(
+    JSON.stringify({
+      ok: true,
+      message: "API is working"
+    }),
+    {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
 }
